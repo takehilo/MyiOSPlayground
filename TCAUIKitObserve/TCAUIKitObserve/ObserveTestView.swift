@@ -14,7 +14,7 @@ struct ObserveTestView: UIViewControllerRepresentable {
 @Reducer
 struct ObserveTest {
     @ObservableState
-    struct State: Equatable {
+    struct State {
         var count = 0
     }
 
