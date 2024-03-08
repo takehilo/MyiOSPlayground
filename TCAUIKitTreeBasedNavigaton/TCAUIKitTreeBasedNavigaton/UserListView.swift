@@ -83,27 +83,24 @@ class UserListViewController: UIViewController {
         observe { [weak self] in
             guard let self else { return }
 
-            if let destination = store.scope(state: \.destination, action: \.destination.presented) {
-                switch destination.case {
-                case let .userDetail(store):
-                    if userDetailController == nil {
-                        userDetailController = UserDetailViewController(store: store)
-                        navigationController?.pushViewController(userDetailController!, animated: true)
-                    }
-                case let .addUser(store):
-                    if addUserController == nil {
-                        addUserController = AddUserViewController(store: store)
-                        present(addUserController!, animated: true)
-                    }
-                }
-            } else if store.destination == nil {
-                if userDetailController != nil {
-                    navigationController?.popToViewController(self, animated: true)
-                    userDetailController = nil
-                } else if addUserController != nil {
-                    addUserController?.dismiss(animated: true)
-                    addUserController = nil
-                }
+            if let userDetail = store.scope(state: \.destination?.userDetail, action: \.destination.presented.userDetail),
+               userDetailController == nil
+            {
+                userDetailController = UserDetailViewController(store: userDetail)
+                navigationController?.pushViewController(userDetailController!, animated: true)
+            } else if store.destination?.userDetail == nil, userDetailController != nil {
+                navigationController?.popToViewController(self, animated: true)
+                userDetailController = nil
+            }
+
+            if let addUser = store.scope(state: \.destination?.addUser, action: \.destination.presented.addUser),
+               addUserController == nil
+            {
+                addUserController = AddUserViewController(store: addUser)
+                present(addUserController!, animated: true)
+            } else if store.destination?.addUser == nil, addUserController != nil {
+                addUserController?.dismiss(animated: true)
+                addUserController = nil
             }
         }
 
