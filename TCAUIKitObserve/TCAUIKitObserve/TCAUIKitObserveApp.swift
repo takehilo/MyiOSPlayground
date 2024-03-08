@@ -11,6 +11,7 @@ struct TCAUIKitObserveApp: App {
                 }
             )
 //            CounterView(model: CounterModel())
+//            CounterViewWithoutMacro(model: CounterModelWithoutMacro())
         }
     }
 }

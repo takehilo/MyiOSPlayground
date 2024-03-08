@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		624B23432B9AC7F6005772C5 /* CounterViewWithoutMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B23422B9AC7F6005772C5 /* CounterViewWithoutMacro.swift */; };
 		62BF64FC2B6FC939000D5E2A /* TCAUIKitObserveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BF64FB2B6FC939000D5E2A /* TCAUIKitObserveApp.swift */; };
 		62BF64FE2B6FC939000D5E2A /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BF64FD2B6FC939000D5E2A /* CounterView.swift */; };
 		62BF65002B6FC93B000D5E2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BF64FF2B6FC93B000D5E2A /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		624B23422B9AC7F6005772C5 /* CounterViewWithoutMacro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewWithoutMacro.swift; sourceTree = "<group>"; };
 		62BF64F82B6FC939000D5E2A /* TCAUIKitObserve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCAUIKitObserve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BF64FB2B6FC939000D5E2A /* TCAUIKitObserveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCAUIKitObserveApp.swift; sourceTree = "<group>"; };
 		62BF64FD2B6FC939000D5E2A /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				62BF64FB2B6FC939000D5E2A /* TCAUIKitObserveApp.swift */,
 				62BF650D2B6FD417000D5E2A /* ObserveTestView.swift */,
 				62BF64FD2B6FC939000D5E2A /* CounterView.swift */,
+				624B23422B9AC7F6005772C5 /* CounterViewWithoutMacro.swift */,
 				62BF64FF2B6FC93B000D5E2A /* Assets.xcassets */,
 				62BF65012B6FC93B000D5E2A /* TCAUIKitObserve.entitlements */,
 				62BF65022B6FC93B000D5E2A /* Preview Content */,
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62BF64FE2B6FC939000D5E2A /* CounterView.swift in Sources */,
+				624B23432B9AC7F6005772C5 /* CounterViewWithoutMacro.swift in Sources */,
 				62BF64FC2B6FC939000D5E2A /* TCAUIKitObserveApp.swift in Sources */,
 				62BF650E2B6FD417000D5E2A /* ObserveTestView.swift in Sources */,
 			);
