@@ -5,7 +5,7 @@ import SwiftUI
 @Reducer
 struct UserList {
     @ObservableState
-    struct State {
+    struct State: Equatable {
         var users: IdentifiedArrayOf<User>
         @Presents var destination: Destination.State?
 
@@ -14,7 +14,7 @@ struct UserList {
         }
     }
 
-    @Reducer
+    @Reducer(state: .equatable)
     enum Destination {
         case userDetail(UserDetail)
         case addUser(AddUser)
@@ -117,7 +117,7 @@ class UserListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if !isMovingToParent {
+        if !isMovingToParent, store.destination != nil {
             store.send(.destination(.dismiss))
         }
     }

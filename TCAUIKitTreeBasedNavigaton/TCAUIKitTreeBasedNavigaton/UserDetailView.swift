@@ -4,7 +4,7 @@ import SwiftUI
 @Reducer
 struct UserDetail {
     @ObservableState
-    struct State {
+    struct State: Equatable {
         let user: User
     }
 }
