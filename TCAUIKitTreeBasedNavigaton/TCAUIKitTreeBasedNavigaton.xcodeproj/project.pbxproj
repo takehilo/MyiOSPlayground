@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6203771B2B980C4500F62E2A /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6203771A2B980C4500F62E2A /* UserDetailView.swift */; };
 		624B233F2B995D8C005772C5 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624B233E2B995D8C005772C5 /* AddUserView.swift */; };
+		629A402C2BA8147F00FC8F72 /* UserListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A402B2BA8147F00FC8F72 /* UserListTests.swift */; };
 		62EF1BBA2B9773CF00F0AFC2 /* TCAUIKitTreeBasedNavigatonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EF1BB92B9773CF00F0AFC2 /* TCAUIKitTreeBasedNavigatonApp.swift */; };
 		62EF1BBE2B9773D000F0AFC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62EF1BBD2B9773D000F0AFC2 /* Assets.xcassets */; };
 		62EF1BC22B9773D000F0AFC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62EF1BC12B9773D000F0AFC2 /* Preview Assets.xcassets */; };
@@ -18,9 +19,21 @@
 		62EF1BD02B97762600F0AFC2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EF1BCF2B97762600F0AFC2 /* Model.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		629A402D2BA8147F00FC8F72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62EF1BAE2B9773CF00F0AFC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62EF1BB52B9773CF00F0AFC2;
+			remoteInfo = TCAUIKitTreeBasedNavigaton;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		6203771A2B980C4500F62E2A /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		624B233E2B995D8C005772C5 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
+		629A40292BA8147F00FC8F72 /* TCAUIKitTreeBasedNavigatonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TCAUIKitTreeBasedNavigatonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		629A402B2BA8147F00FC8F72 /* UserListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTests.swift; sourceTree = "<group>"; };
 		62EF1BB62B9773CF00F0AFC2 /* TCAUIKitTreeBasedNavigaton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCAUIKitTreeBasedNavigaton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62EF1BB92B9773CF00F0AFC2 /* TCAUIKitTreeBasedNavigatonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCAUIKitTreeBasedNavigatonApp.swift; sourceTree = "<group>"; };
 		62EF1BBD2B9773D000F0AFC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,6 +45,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		629A40262BA8147F00FC8F72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		62EF1BB32B9773CF00F0AFC2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,10 +63,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		629A402A2BA8147F00FC8F72 /* TCAUIKitTreeBasedNavigatonTests */ = {
+			isa = PBXGroup;
+			children = (
+				629A402B2BA8147F00FC8F72 /* UserListTests.swift */,
+			);
+			path = TCAUIKitTreeBasedNavigatonTests;
+			sourceTree = "<group>";
+		};
 		62EF1BAD2B9773CF00F0AFC2 = {
 			isa = PBXGroup;
 			children = (
 				62EF1BB82B9773CF00F0AFC2 /* TCAUIKitTreeBasedNavigaton */,
+				629A402A2BA8147F00FC8F72 /* TCAUIKitTreeBasedNavigatonTests */,
 				62EF1BB72B9773CF00F0AFC2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				62EF1BB62B9773CF00F0AFC2 /* TCAUIKitTreeBasedNavigaton.app */,
+				629A40292BA8147F00FC8F72 /* TCAUIKitTreeBasedNavigatonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +116,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		629A40282BA8147F00FC8F72 /* TCAUIKitTreeBasedNavigatonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 629A402F2BA8147F00FC8F72 /* Build configuration list for PBXNativeTarget "TCAUIKitTreeBasedNavigatonTests" */;
+			buildPhases = (
+				629A40252BA8147F00FC8F72 /* Sources */,
+				629A40262BA8147F00FC8F72 /* Frameworks */,
+				629A40272BA8147F00FC8F72 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				629A402E2BA8147F00FC8F72 /* PBXTargetDependency */,
+			);
+			name = TCAUIKitTreeBasedNavigatonTests;
+			productName = TCAUIKitTreeBasedNavigatonTests;
+			productReference = 629A40292BA8147F00FC8F72 /* TCAUIKitTreeBasedNavigatonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		62EF1BB52B9773CF00F0AFC2 /* TCAUIKitTreeBasedNavigaton */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62EF1BC52B9773D000F0AFC2 /* Build configuration list for PBXNativeTarget "TCAUIKitTreeBasedNavigaton" */;
@@ -116,6 +164,10 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					629A40282BA8147F00FC8F72 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 62EF1BB52B9773CF00F0AFC2;
+					};
 					62EF1BB52B9773CF00F0AFC2 = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -138,11 +190,19 @@
 			projectRoot = "";
 			targets = (
 				62EF1BB52B9773CF00F0AFC2 /* TCAUIKitTreeBasedNavigaton */,
+				629A40282BA8147F00FC8F72 /* TCAUIKitTreeBasedNavigatonTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		629A40272BA8147F00FC8F72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		62EF1BB42B9773CF00F0AFC2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +215,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		629A40252BA8147F00FC8F72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				629A402C2BA8147F00FC8F72 /* UserListTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		62EF1BB22B9773CF00F0AFC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -170,7 +238,56 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		629A402E2BA8147F00FC8F72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62EF1BB52B9773CF00F0AFC2 /* TCAUIKitTreeBasedNavigaton */;
+			targetProxy = 629A402D2BA8147F00FC8F72 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		629A40302BA8147F00FC8F72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QEN3LWLX44;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.TCAUIKitTreeBasedNavigatonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TCAUIKitTreeBasedNavigaton.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TCAUIKitTreeBasedNavigaton";
+			};
+			name = Debug;
+		};
+		629A40312BA8147F00FC8F72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QEN3LWLX44;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.TCAUIKitTreeBasedNavigatonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TCAUIKitTreeBasedNavigaton.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TCAUIKitTreeBasedNavigaton";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		62EF1BC32B9773D000F0AFC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -364,6 +481,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		629A402F2BA8147F00FC8F72 /* Build configuration list for PBXNativeTarget "TCAUIKitTreeBasedNavigatonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				629A40302BA8147F00FC8F72 /* Debug */,
+				629A40312BA8147F00FC8F72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		62EF1BB12B9773CF00F0AFC2 /* Build configuration list for PBXProject "TCAUIKitTreeBasedNavigaton" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

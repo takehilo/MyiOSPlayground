@@ -12,6 +12,7 @@ struct AddUser {
         case closeButtonTapped
         case delegate(Delegate)
 
+        @CasePathable
         enum Delegate {
             case saveUser(String)
         }

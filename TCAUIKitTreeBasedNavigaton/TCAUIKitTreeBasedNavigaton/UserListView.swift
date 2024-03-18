@@ -21,7 +21,7 @@ struct UserList {
     }
 
     enum Action {
-        case userTapped(User)
+        case userTapped(User.ID)
         case addButtonTapped
         case destination(PresentationAction<Destination.Action>)
     }
@@ -31,7 +31,8 @@ struct UserList {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case let .userTapped(user):
+            case let .userTapped(id):
+                guard let user = state.users[id: id] else { return .none }
                 state.destination = .userDetail(.init(user: user))
                 return .none
 
@@ -161,6 +162,6 @@ extension UserListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let user = store.users[indexPath.row]
-        store.send(.userTapped(user))
+        store.send(.userTapped(user.id))
     }
 }
