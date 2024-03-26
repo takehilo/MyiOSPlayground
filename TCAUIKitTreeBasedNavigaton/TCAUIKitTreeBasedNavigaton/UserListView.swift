@@ -9,8 +9,8 @@ struct UserList {
         var users: IdentifiedArrayOf<User>
         @Presents var destination: Destination.State?
 
-        init(users: [User]) {
-            self.users = .init(uniqueElements: users)
+        init(users: IdentifiedArrayOf<User>) {
+            self.users = users
         }
     }
 
@@ -26,8 +26,6 @@ struct UserList {
         case destination(PresentationAction<Destination.Action>)
     }
 
-    @Dependency(\.uuid) var uuid
-
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
@@ -41,7 +39,7 @@ struct UserList {
                 return .none
 
             case let .destination(.presented(.addUser(.delegate(.saveUser(text))))):
-                state.users.append(User(id: uuid(), name: text))
+                state.users.append(User(id: UserId(rawValue: state.users.count), name: text, followers: []))
                 return .none
 
             case .destination:
@@ -55,7 +53,7 @@ struct UserList {
 class UserListViewController: UIViewController {
     let store: StoreOf<UserList>
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, UUID>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, UserId>!
 
     enum Section {
         case main
@@ -108,7 +106,7 @@ class UserListViewController: UIViewController {
         observe { [weak self] in
             guard let self else { return }
 
-            var snapshot = NSDiffableDataSourceSnapshot<Section, UUID>()
+            var snapshot = NSDiffableDataSourceSnapshot<Section, UserId>()
             snapshot.appendSections([.main])
             snapshot.appendItems(store.users.ids.elements)
             dataSource.apply(snapshot, animatingDifferences: false)
@@ -137,7 +135,7 @@ class UserListViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
-        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, UUID> { [weak self] (cell, indexPath, item) in
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, UserId> { [weak self] (cell, indexPath, item) in
             guard let self else { return }
 
             var content = cell.defaultContentConfiguration()
@@ -147,7 +145,7 @@ class UserListViewController: UIViewController {
             cell.contentConfiguration = content
         }
 
-        dataSource = UICollectionViewDiffableDataSource<Section, UUID>(collectionView: collectionView) {
+        dataSource = UICollectionViewDiffableDataSource<Section, UserId>(collectionView: collectionView) {
             (collectionView, indexPath, item) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
         }

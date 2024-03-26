@@ -5,7 +5,7 @@ import ComposableArchitecture
 struct AppReducer {
     @ObservableState
     struct State {
-        var userList = UserList.State(users: Model.users)
+        var userList = UserList.State(users: User.users)
     }
 
     enum Action {
