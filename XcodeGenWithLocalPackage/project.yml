@@ -1,0 +1,20 @@
+name: XcodeGenWithLocalPackage
+targets:
+  XcodeGenWithLocalPackage:
+    type: application
+    platform: iOS
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.example.XcodeGenWithLocalPackage
+      CURRENT_PROJECT_VERSION: 1
+      MARKETING_VERSION: 0.0.1
+      GENERATE_INFOPLIST_FILE: YES
+      INFOPLIST_KEY_UILaunchScreen_Generation: YES
+      INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+      INFOPLIST_KEY_UIStatusBarStyle: UIStatusBarStyleDefault
+    sources:
+      - XcodeGenWithLocalPackage
+schemes:
+  XcodeGenWithLocalPackage:
+    build:
+      targets:
+        XcodeGenWithLocalPackage: all
