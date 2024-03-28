@@ -1,17 +1,19 @@
-//
-//  XcodeGenWithLocalPackageApp.swift
-//  XcodeGenWithLocalPackage
-//
-//  Created by takehiro.kaneko on 2024/03/27.
-//
-
 import SwiftUI
+import SharedModel
+import AppFeature
+import ComposableArchitecture
 
 @main
 struct XcodeGenWithLocalPackageApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView(
+                store: Store(
+                    initialState: AppFeature.State(user: User(name: "alice"))
+                ) {
+                    AppFeature()
+                }
+            )
         }
     }
 }

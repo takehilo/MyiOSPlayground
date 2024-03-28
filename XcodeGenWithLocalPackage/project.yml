@@ -3,6 +3,10 @@ targets:
   XcodeGenWithLocalPackage:
     type: application
     platform: iOS
+    dependencies:
+      - package: AppFeature
+      - package: swift-composable-architecture
+        product: ComposableArchitecture
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.example.XcodeGenWithLocalPackage
       CURRENT_PROJECT_VERSION: 1
@@ -18,3 +22,25 @@ schemes:
     build:
       targets:
         XcodeGenWithLocalPackage: all
+    test:
+      targets:
+        - package: AppFeature/AppFeatureTests
+        - package: LoginFeature/LoginFeatureTests
+        - package: HomeFeature/HomeFeatureTests
+        - package: SharedModel/SharedModelTests
+packages:
+  SharedModel:
+    path: SharedModel
+    group: Core
+  AppFeature:
+    path: AppFeature
+    group: Feature
+  LoginFeature:
+    path: LoginFeature
+    group: Feature
+  HomeFeature:
+    path: HomeFeature
+    group: Feature
+  swift-composable-architecture:
+    url: https://github.com/pointfreeco/swift-composable-architecture
+    version: 1.9.2
