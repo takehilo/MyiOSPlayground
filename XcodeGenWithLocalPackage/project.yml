@@ -4,7 +4,8 @@ targets:
     type: application
     platform: iOS
     dependencies:
-      - package: AppFeature
+      - package: AppPackage
+        product: AppFeature
       - package: swift-composable-architecture
         product: ComposableArchitecture
     settings:
@@ -24,23 +25,12 @@ schemes:
         XcodeGenWithLocalPackage: all
     test:
       targets:
-        - package: AppFeature/AppFeatureTests
-        - package: LoginFeature/LoginFeatureTests
-        - package: HomeFeature/HomeFeatureTests
-        - package: SharedModel/SharedModelTests
+        - package: AppPackage/AppFeatureTests
+        - package: AppPackage/HomeFeatureTests
+        - package: AppPackage/LoginFeatureTests
 packages:
-  SharedModel:
-    path: SharedModel
-    group: Core
-  AppFeature:
-    path: AppFeature
-    group: Feature
-  LoginFeature:
-    path: LoginFeature
-    group: Feature
-  HomeFeature:
-    path: HomeFeature
-    group: Feature
+  AppPackage:
+    path: AppPackage
   swift-composable-architecture:
     url: https://github.com/pointfreeco/swift-composable-architecture
     version: 1.9.2

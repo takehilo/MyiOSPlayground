@@ -3,18 +3,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "AppFeature",
+    name: "AppPackage",
     platforms: [.iOS(.v17)],
     products: [
-        .library(
-            name: "AppFeature",
-            targets: ["AppFeature"]
-        ),
+        .library(name: "AppFeature", targets: ["AppFeature"])
     ],
     dependencies: [
-        .package(path: "SharedModel"),
-        .package(path: "LoginFeature"),
-        .package(path: "HomeFeature"),
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.9.2"),
     ],
     targets: [
@@ -30,6 +24,25 @@ let package = Package(
         .testTarget(
             name: "AppFeatureTests",
             dependencies: ["AppFeature"]
+        ),
+        .target(
+            name: "HomeFeature",
+            dependencies: ["SharedModel"]
+        ),
+        .testTarget(
+            name: "HomeFeatureTests",
+            dependencies: ["HomeFeature"]
+        ),
+        .target(
+            name: "LoginFeature",
+            dependencies: ["SharedModel"]
+        ),
+        .testTarget(
+            name: "LoginFeatureTests",
+            dependencies: ["LoginFeature"]
+        ),
+        .target(
+            name: "SharedModel"
         ),
     ]
 )
