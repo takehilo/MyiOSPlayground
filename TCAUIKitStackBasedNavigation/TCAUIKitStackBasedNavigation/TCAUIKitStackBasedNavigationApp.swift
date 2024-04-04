@@ -1,17 +1,15 @@
-//
-//  TCAUIKitStackBasedNavigationApp.swift
-//  TCAUIKitStackBasedNavigation
-//
-//  Created by takehiro.kaneko on 2024/04/04.
-//
-
 import SwiftUI
+import ComposableArchitecture
 
 @main
-struct TCAUIKitStackBasedNavigationApp: App {
+struct TCAUIKitTreeBasedNavigatonApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView(
+                store: Store(initialState: AppReducer.State()) {
+                    AppReducer()
+                }
+            )
         }
     }
 }
