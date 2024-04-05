@@ -1,35 +1,39 @@
 import ComposableArchitecture
 import UIKit
 import SwiftUI
+//import UserDetailFeature
+import SharedModel
 
 @Reducer
-struct UserList {
+public struct UserList {
     @ObservableState
-    struct State: Equatable {
-        var users: IdentifiedArrayOf<User>
-        @Presents var destination: Destination.State?
+    public struct State: Equatable {
+        public var users: IdentifiedArrayOf<User>
+        @Presents public var destination: Destination.State?
 
-        init(users: IdentifiedArrayOf<User>) {
+        public init(users: IdentifiedArrayOf<User>) {
             self.users = users
         }
     }
 
     @Reducer(state: .equatable)
-    enum Destination {
-        case userDetail(UserDetail)
+    public enum Destination {
+//        case userDetail(UserDetail)
     }
 
-    enum Action {
+    public enum Action {
         case userTapped(User.ID)
         case destination(PresentationAction<Destination.Action>)
     }
 
-    var body: some ReducerOf<Self> {
+    public init() {}
+
+    public var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
             case let .userTapped(id):
                 guard let user = state.users[id: id] else { return .none }
-                state.destination = .userDetail(.init(user: user))
+//                state.destination = .userDetail(.init(user: user))
                 return .none
 
             case .destination:
@@ -40,7 +44,7 @@ struct UserList {
     }
 }
 
-class UserListViewController: UIViewController {
+public class UserListViewController: UIViewController {
     let store: StoreOf<UserList>
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, UserId>!
@@ -49,7 +53,7 @@ class UserListViewController: UIViewController {
         case main
     }
 
-    init(store: StoreOf<UserList>) {
+    public init(store: StoreOf<UserList>) {
         self.store = store
         super.init(nibName: nil, bundle: nil)
     }
@@ -58,28 +62,28 @@ class UserListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "ユーザ一覧"
 
         setupCollectionView()
 
-        var userDetailController: UserDetailViewController?
-
-        observe { [weak self] in
-            guard let self else { return }
-
-            if let userDetail = store.scope(state: \.destination?.userDetail, action: \.destination.presented.userDetail),
-               userDetailController == nil
-            {
-                userDetailController = UserDetailViewController(store: userDetail)
-                navigationController?.pushViewController(userDetailController!, animated: true)
-            } else if store.destination?.userDetail == nil, userDetailController != nil {
-                navigationController?.popToViewController(self, animated: true)
-                userDetailController = nil
-            }
-        }
+//        var userDetailController: UserDetailViewController?
+//
+//        observe { [weak self] in
+//            guard let self else { return }
+//
+//            if let userDetail = store.scope(state: \.destination?.userDetail, action: \.destination.presented.userDetail),
+//               userDetailController == nil
+//            {
+//                userDetailController = UserDetailViewController(store: userDetail)
+//                navigationController?.pushViewController(userDetailController!, animated: true)
+//            } else if store.destination?.userDetail == nil, userDetailController != nil {
+//                navigationController?.popToViewController(self, animated: true)
+//                userDetailController = nil
+//            }
+//        }
 
         observe { [weak self] in
             guard let self else { return }
@@ -91,7 +95,7 @@ class UserListViewController: UIViewController {
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         if !isMovingToParent, store.destination != nil {
@@ -131,7 +135,7 @@ class UserListViewController: UIViewController {
 }
 
 extension UserListViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let user = store.users[indexPath.row]
         store.send(.userTapped(user.id))

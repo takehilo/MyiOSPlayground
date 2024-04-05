@@ -1,5 +1,6 @@
 import SwiftUI
 import ComposableArchitecture
+import AppFeature
 
 @main
 struct TCAUIKitTreeBasedNavigatonApp: App {

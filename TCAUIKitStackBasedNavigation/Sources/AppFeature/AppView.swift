@@ -1,18 +1,24 @@
 import SwiftUI
 import ComposableArchitecture
+import UserListFeature
+import SharedModel
 
 @Reducer
-struct AppReducer {
+public struct AppReducer {
     @ObservableState
-    struct State {
-        var userList = UserList.State(users: User.users)
+    public struct State {
+        public var userList = UserList.State(users: User.users)
+
+        public init() {}
     }
 
-    enum Action {
+    public enum Action {
         case userList(UserList.Action)
     }
 
-    var body: some ReducerOf<Self> {
+    public init() {}
+
+    public var body: some ReducerOf<Self> {
         Scope(state: \.userList, action: \.userList) {
             UserList()
         }
@@ -22,14 +28,18 @@ struct AppReducer {
     }
 }
 
-struct AppView: UIViewControllerRepresentable {
+public struct AppView: UIViewControllerRepresentable {
     let store: StoreOf<AppReducer>
 
-    func makeUIViewController(context: Context) -> some UIViewController {
+    public init(store: StoreOf<AppReducer>) {
+        self.store = store
+    }
+
+    public func makeUIViewController(context: Context) -> some UIViewController {
         AppViewController(store: store)
     }
 
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+    public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
     }
 }
 

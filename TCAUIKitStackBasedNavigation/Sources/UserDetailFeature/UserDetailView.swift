@@ -1,5 +1,7 @@
 import ComposableArchitecture
 import SwiftUI
+import SharedModel
+//import FollowerListFeature
 
 @Reducer
 public struct UserDetail {
@@ -7,11 +9,15 @@ public struct UserDetail {
     public struct State: Equatable {
         public let user: User
         @Presents public var destination: Destination.State?
+
+        public init(user: User) {
+            self.user = user
+        }
     }
 
     @Reducer(state: .equatable)
     public enum Destination {
-        case followerList(FollowerList)
+//        case followerList(FollowerList)
     }
 
     public enum Action {
@@ -19,11 +25,13 @@ public struct UserDetail {
         case destination(PresentationAction<Destination.Action>)
     }
 
+    public init() {}
+
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
             case .goToFollowerListTapped:
-                state.destination = .followerList(.init(user: state.user))
+//                state.destination = .followerList(.init(user: state.user))
                 return .none
 
             case .destination:
@@ -34,7 +42,7 @@ public struct UserDetail {
     }
 }
 
-class UserDetailViewController: UIViewController {
+public class UserDetailViewController: UIViewController {
     let store: StoreOf<UserDetail>
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Int>!
@@ -44,7 +52,7 @@ class UserDetailViewController: UIViewController {
         case follower
     }
 
-    init(store: StoreOf<UserDetail>) {
+    public init(store: StoreOf<UserDetail>) {
         self.store = store
         super.init(nibName: nil, bundle: nil)
     }
@@ -53,31 +61,31 @@ class UserDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "ユーザ詳細"
 
         setupCollectionView()
 
-        var followerListController: FollowerListViewController?
-
-        observe { [weak self] in
-            guard let self else { return }
-
-            if let followerList = store.scope(state: \.destination?.followerList, action: \.destination.presented.followerList),
-               followerListController == nil
-            {
-                followerListController = FollowerListViewController(store: followerList)
-                navigationController?.pushViewController(followerListController!, animated: true)
-            } else if store.destination?.followerList == nil, followerListController != nil {
-                navigationController?.popToViewController(self, animated: true)
-                followerListController = nil
-            }
-        }
+//        var followerListController: FollowerListViewController?
+//
+//        observe { [weak self] in
+//            guard let self else { return }
+//
+//            if let followerList = store.scope(state: \.destination?.followerList, action: \.destination.presented.followerList),
+//               followerListController == nil
+//            {
+//                followerListController = FollowerListViewController(store: followerList)
+//                navigationController?.pushViewController(followerListController!, animated: true)
+//            } else if store.destination?.followerList == nil, followerListController != nil {
+//                navigationController?.popToViewController(self, animated: true)
+//                followerListController = nil
+//            }
+//        }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         if !isMovingToParent, store.destination != nil {
@@ -139,7 +147,7 @@ class UserDetailViewController: UIViewController {
 }
 
 extension UserDetailViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
 
         if indexPath.section == 1 {

@@ -7,28 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62ADCD9A2BBEFD44002A46DB /* FollowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ADCD992BBEFD44002A46DB /* FollowerListView.swift */; };
-		62BA914B2BBE305D0049E06E /* TCAUIKitStackBasedNavigationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA914A2BBE305D0049E06E /* TCAUIKitStackBasedNavigationApp.swift */; };
+		62BA914B2BBE305D0049E06E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA914A2BBE305D0049E06E /* App.swift */; };
 		62BA914F2BBE305E0049E06E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA914E2BBE305E0049E06E /* Assets.xcassets */; };
 		62BA91532BBE305E0049E06E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BA91522BBE305E0049E06E /* Preview Assets.xcassets */; };
-		62BA915B2BBE332C0049E06E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 62BA915A2BBE332C0049E06E /* ComposableArchitecture */; };
-		62BA915D2BBE33440049E06E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA915C2BBE33440049E06E /* AppView.swift */; };
-		62BA915F2BBE34DF0049E06E /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA915E2BBE34DF0049E06E /* UserListView.swift */; };
-		62BA91612BBE34F30049E06E /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA91602BBE34F30049E06E /* UserDetailView.swift */; };
-		62BA91632BBE35070049E06E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BA91622BBE35070049E06E /* Model.swift */; };
+		62E584922BBF08D300E7A571 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 62E584912BBF08D300E7A571 /* AppFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		62ADCD992BBEFD44002A46DB /* FollowerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListView.swift; sourceTree = "<group>"; };
+		620438082BBF0714003EDF56 /* TCAUIKitStackBasedNavigation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TCAUIKitStackBasedNavigation; path = ..; sourceTree = "<group>"; };
 		62BA91472BBE305D0049E06E /* TCAUIKitStackBasedNavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCAUIKitStackBasedNavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		62BA914A2BBE305D0049E06E /* TCAUIKitStackBasedNavigationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCAUIKitStackBasedNavigationApp.swift; sourceTree = "<group>"; };
+		62BA914A2BBE305D0049E06E /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		62BA914E2BBE305E0049E06E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62BA91502BBE305E0049E06E /* TCAUIKitStackBasedNavigation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TCAUIKitStackBasedNavigation.entitlements; sourceTree = "<group>"; };
 		62BA91522BBE305E0049E06E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		62BA915C2BBE33440049E06E /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
-		62BA915E2BBE34DF0049E06E /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
-		62BA91602BBE34F30049E06E /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
-		62BA91622BBE35070049E06E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62BA915B2BBE332C0049E06E /* ComposableArchitecture in Frameworks */,
+				62E584922BBF08D300E7A571 /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,7 +38,9 @@
 			isa = PBXGroup;
 			children = (
 				62BA91492BBE305D0049E06E /* TCAUIKitStackBasedNavigation */,
+				620438082BBF0714003EDF56 /* TCAUIKitStackBasedNavigation */,
 				62BA91482BBE305D0049E06E /* Products */,
+				62E584902BBF08D300E7A571 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,12 +55,7 @@
 		62BA91492BBE305D0049E06E /* TCAUIKitStackBasedNavigation */ = {
 			isa = PBXGroup;
 			children = (
-				62BA914A2BBE305D0049E06E /* TCAUIKitStackBasedNavigationApp.swift */,
-				62BA915C2BBE33440049E06E /* AppView.swift */,
-				62BA915E2BBE34DF0049E06E /* UserListView.swift */,
-				62BA91602BBE34F30049E06E /* UserDetailView.swift */,
-				62ADCD992BBEFD44002A46DB /* FollowerListView.swift */,
-				62BA91622BBE35070049E06E /* Model.swift */,
+				62BA914A2BBE305D0049E06E /* App.swift */,
 				62BA914E2BBE305E0049E06E /* Assets.xcassets */,
 				62BA91502BBE305E0049E06E /* TCAUIKitStackBasedNavigation.entitlements */,
 				62BA91512BBE305E0049E06E /* Preview Content */,
@@ -81,6 +69,13 @@
 				62BA91522BBE305E0049E06E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		62E584902BBF08D300E7A571 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,7 +95,7 @@
 			);
 			name = TCAUIKitStackBasedNavigation;
 			packageProductDependencies = (
-				62BA915A2BBE332C0049E06E /* ComposableArchitecture */,
+				62E584912BBF08D300E7A571 /* AppFeature */,
 			);
 			productName = TCAUIKitStackBasedNavigation;
 			productReference = 62BA91472BBE305D0049E06E /* TCAUIKitStackBasedNavigation.app */;
@@ -131,7 +126,6 @@
 			);
 			mainGroup = 62BA913E2BBE305D0049E06E;
 			packageReferences = (
-				62BA91592BBE332C0049E06E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = 62BA91482BBE305D0049E06E /* Products */;
 			projectDirPath = "";
@@ -159,12 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62BA91632BBE35070049E06E /* Model.swift in Sources */,
-				62ADCD9A2BBEFD44002A46DB /* FollowerListView.swift in Sources */,
-				62BA91612BBE34F30049E06E /* UserDetailView.swift in Sources */,
-				62BA914B2BBE305D0049E06E /* TCAUIKitStackBasedNavigationApp.swift in Sources */,
-				62BA915F2BBE34DF0049E06E /* UserListView.swift in Sources */,
-				62BA915D2BBE33440049E06E /* AppView.swift in Sources */,
+				62BA914B2BBE305D0049E06E /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,22 +373,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		62BA91592BBE332C0049E06E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.9.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		62BA915A2BBE332C0049E06E /* ComposableArchitecture */ = {
+		62E584912BBF08D300E7A571 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 62BA91592BBE332C0049E06E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
+			productName = AppFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
