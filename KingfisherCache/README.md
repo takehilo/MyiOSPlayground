@@ -19,7 +19,8 @@ ImageCache.default.diskStorage.config.expiration = .seconds(10)
 
 有効期限には延長の仕組みがある。  
 キャッシュにアクセスすると、デフォルトでは有効期限が7日間延長される（キャッシュ時点での有効期限期間によって変わる）。  
-以下のようにすることで、延長しないようにすることができる。
+以下のようにすることで、延長しないようにすることができる。    
+なお、この変更はすでにキャッシュ済みのものにも適用される。
 
 ```swift
 KingfisherManager.shared.defaultOptions.append(.diskCacheAccessExtendingExpiration(.none))
