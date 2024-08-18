@@ -14,6 +14,7 @@
 		62C12BFF2C6E6AB800B4E76E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 62C12BFE2C6E6AB800B4E76E /* ComposableArchitecture */; };
 		62C12C012C6E6B0E00B4E76E /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C12C002C6E6B0E00B4E76E /* UserDetailView.swift */; };
 		62C12C032C6E6B7800B4E76E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C12C022C6E6B7800B4E76E /* Model.swift */; };
+		62C12C062C6F2D3500B4E76E /* OpenLoggingReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C12C052C6F2D3500B4E76E /* OpenLoggingReducer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		62C12BF62C6E67DF00B4E76E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		62C12C002C6E6B0E00B4E76E /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		62C12C022C6E6B7800B4E76E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		62C12C052C6F2D3500B4E76E /* OpenLoggingReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLoggingReducer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				62C12BF02C6E67DE00B4E76E /* UserListView.swift */,
 				62C12C002C6E6B0E00B4E76E /* UserDetailView.swift */,
 				62C12C022C6E6B7800B4E76E /* Model.swift */,
+				62C12C052C6F2D3500B4E76E /* OpenLoggingReducer.swift */,
 				62C12BF22C6E67DF00B4E76E /* Assets.xcassets */,
 				62C12BF42C6E67DF00B4E76E /* CustomLoggingReducer.entitlements */,
 				62C12BF52C6E67DF00B4E76E /* Preview Content */,
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C12C062C6F2D3500B4E76E /* OpenLoggingReducer.swift in Sources */,
 				62C12C012C6E6B0E00B4E76E /* UserDetailView.swift in Sources */,
 				62C12BF12C6E67DE00B4E76E /* UserListView.swift in Sources */,
 				62C12BEF2C6E67DE00B4E76E /* CustomLoggingReducerApp.swift in Sources */,
