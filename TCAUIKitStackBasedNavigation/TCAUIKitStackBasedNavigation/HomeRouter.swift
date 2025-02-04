@@ -5,19 +5,24 @@ import ComposableArchitecture
 struct HomeRouter {
     @ObservableState
     struct State {
-        @Shared(.homeRouterPath) var path
+        @Shared(.homePathType) var homePathType
         var home = Home.State()
+        var path = StackState<Path.State>()
     }
 
-    @Reducer(state: .equatable)
-    enum Path {
-        case news(News)
-        case movie(Movie)
-    }
-
-    enum Action {
+    enum Action: ViewAction {
+        case view(View)
+        case _internal(Internal)
         case path(StackActionOf<Path>)
         case home(Home.Action)
+
+        enum View {
+            case viewDidLoad
+        }
+
+        enum Internal {
+            case pathTypeChanged
+        }
     }
 
     var body: some ReducerOf<Self> {
@@ -25,14 +30,44 @@ struct HomeRouter {
             Home()
         }
         Reduce { state, action in
-            .none
+            switch action {
+            case let .view(viewAction):
+                switch viewAction {
+                case .viewDidLoad:
+                    return .publisher {
+                        state.$homePathType
+                            .publisher
+                            .dropFirst()
+                            .map { _ in Action._internal(.pathTypeChanged) }
+                    }
+                }
+            case let ._internal(internalAction):
+                switch internalAction {
+                case .pathTypeChanged:
+                    if let pathType = state.homePathType {
+                        switch pathType {
+                        case .news:
+                            state.path.append(.news(.init()))
+                        case .movie:
+                            state.path.append(.movie(.init()))
+                        }
+                        state.$homePathType.withLock { $0 = nil }
+                    }
+                    return .none
+                }
+            case .path:
+                return .none
+            case .home:
+                return .none
+            }
         }
         .forEach(\.path, action: \.path)
+        ._printChanges()
     }
 }
 
 class HomeRouterController: NavigationStackController {
-    private var store: StoreOf<HomeRouter>!
+    var store: StoreOf<HomeRouter>!
 
     convenience init(store: StoreOf<HomeRouter>) {
         @UIBindable var store = store
@@ -53,16 +88,21 @@ class HomeRouterController: NavigationStackController {
 
         self.store = store
     }
-}
 
-extension SharedReaderKey where Self == InMemoryKey<StackState<HomeRouter.Path.State>> {
-    static var homeRouterPath: Self {
-        inMemory("homeRouterPath")
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        store.send(.view(.viewDidLoad))
     }
 }
 
-extension SharedReaderKey where Self == InMemoryKey<StackState<HomeRouter.Path.State>>.Default {
-    static var homeRouterPath: Self {
-        Self[.homeRouterPath, default: .init()]
+extension SharedReaderKey where Self == InMemoryKey<PathType?> {
+    static var homePathType: Self {
+        inMemory("homePathType")
+    }
+}
+
+extension SharedReaderKey where Self == InMemoryKey<PathType?>.Default {
+    static var homePathType: Self {
+        Self[.homePathType, default: nil]
     }
 }
