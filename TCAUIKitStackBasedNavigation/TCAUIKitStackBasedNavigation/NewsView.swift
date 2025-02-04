@@ -5,7 +5,11 @@ import ComposableArchitecture
 struct News {
     @ObservableState
     struct State: Equatable {
-//        @Shared(.pathType) var pathType
+        @Shared var pathType: PathType?
+
+        init(pathType: Shared<PathType?>) {
+            self._pathType = pathType
+        }
     }
 
     enum Action: ViewAction {
@@ -23,10 +27,10 @@ struct News {
             case let .view(viewAction):
                 switch viewAction {
                 case .newsButtonTapped:
-//                    state.$pathType.withLock { $0 = .news(.init()) }
+                    state.$pathType.withLock { $0 = .news(.init()) }
                     return .none
                 case .movieButtonTapped:
-//                    state.$pathType.withLock { $0 = .movie(.init()) }
+                    state.$pathType.withLock { $0 = .movie(.init()) }
                     return .none
                 }
             }

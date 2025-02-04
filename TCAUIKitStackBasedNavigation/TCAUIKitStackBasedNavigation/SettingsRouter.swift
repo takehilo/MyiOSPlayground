@@ -47,9 +47,9 @@ struct SettingsRouter {
                     if let pathType = state.settingsPathType {
                         switch pathType {
                         case .news:
-                            state.path.append(.news(.init()))
+                            state.path.append(.news(.init(pathType: state.$settingsPathType)))
                         case .movie:
-                            state.path.append(.movie(.init()))
+                            state.path.append(.movie(.init(pathType: state.$settingsPathType)))
                         }
                         state.$settingsPathType.withLock { $0 = nil }
                     }
