@@ -7,13 +7,13 @@ enum Path {
 }
 
 @CasePathable
-enum PathType: Equatable {
-    case news(NewsPath)
-    case movie(MoviePath)
+enum PathDto: Equatable {
+    case news(News)
+    case movie(Movie)
 
-    struct NewsPath: Equatable {
+    struct News: Equatable {
     }
 
-    struct MoviePath: Equatable {
+    struct Movie: Equatable {
     }
 }

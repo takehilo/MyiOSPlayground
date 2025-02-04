@@ -5,7 +5,7 @@ import ComposableArchitecture
 struct Settings {
     @ObservableState
     struct State {
-        @Shared(.settingsPathType) var settingsPathType
+        @Shared(.settingsPathDto) var settingsPathDto
     }
 
     enum Action: ViewAction {
@@ -23,10 +23,10 @@ struct Settings {
             case let .view(viewAction):
                 switch viewAction {
                 case .newsButtonTapped:
-                    state.$settingsPathType.withLock { $0 = .news(.init()) }
+                    state.$settingsPathDto.withLock { $0 = .news(.init()) }
                     return .none
                 case .movieButtonTapped:
-                    state.$settingsPathType.withLock { $0 = .movie(.init()) }
+                    state.$settingsPathDto.withLock { $0 = .movie(.init()) }
                     return .none
                 }
             }
@@ -73,14 +73,14 @@ class SettingsViewController: UIViewController {
     }
 }
 
-extension SharedReaderKey where Self == InMemoryKey<PathType?> {
-    static var settingsPathType: Self {
-        inMemory("settingsPathType")
+extension SharedReaderKey where Self == InMemoryKey<PathDto?> {
+    static var settingsPathDto: Self {
+        inMemory("settingsPathDto")
     }
 }
 
-extension SharedReaderKey where Self == InMemoryKey<PathType?>.Default {
-    static var settingsPathType: Self {
-        Self[.settingsPathType, default: nil]
+extension SharedReaderKey where Self == InMemoryKey<PathDto?>.Default {
+    static var settingsPathDto: Self {
+        Self[.settingsPathDto, default: nil]
     }
 }

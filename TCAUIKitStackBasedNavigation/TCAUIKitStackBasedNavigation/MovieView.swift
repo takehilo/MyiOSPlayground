@@ -5,10 +5,10 @@ import ComposableArchitecture
 struct Movie {
     @ObservableState
     struct State: Equatable {
-        @Shared var pathType: PathType?
+        @Shared var pathDto: PathDto?
 
-        init(pathType: Shared<PathType?>) {
-            self._pathType = pathType
+        init(pathDto: Shared<PathDto?>) {
+            self._pathDto = pathDto
         }
     }
 
@@ -27,10 +27,10 @@ struct Movie {
             case let .view(viewAction):
                 switch viewAction {
                 case .newsButtonTapped:
-                    state.$pathType.withLock { $0 = .news(.init()) }
+                    state.$pathDto.withLock { $0 = .news(.init()) }
                     return .none
                 case .movieButtonTapped:
-                    state.$pathType.withLock { $0 = .movie(.init()) }
+                    state.$pathDto.withLock { $0 = .movie(.init()) }
                     return .none
                 }
             }

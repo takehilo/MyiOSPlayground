@@ -5,7 +5,7 @@ import ComposableArchitecture
 struct SettingsRouter {
     @ObservableState
     struct State {
-        @Shared(.settingsPathType) var settingsPathType
+        @Shared(.settingsPathDto) var settingsPathDto
         var home = Settings.State()
         var path = StackState<Path.State>()
     }
@@ -35,7 +35,7 @@ struct SettingsRouter {
                 switch viewAction {
                 case .viewDidLoad:
                     return .publisher {
-                        state.$settingsPathType
+                        state.$settingsPathDto
                             .publisher
                             .dropFirst()
                             .map { _ in Action._internal(.pathTypeChanged) }
@@ -44,14 +44,14 @@ struct SettingsRouter {
             case let ._internal(internalAction):
                 switch internalAction {
                 case .pathTypeChanged:
-                    if let pathType = state.settingsPathType {
+                    if let pathType = state.settingsPathDto {
                         switch pathType {
                         case .news:
-                            state.path.append(.news(.init(pathType: state.$settingsPathType)))
+                            state.path.append(.news(.init(pathDto: state.$settingsPathDto)))
                         case .movie:
-                            state.path.append(.movie(.init(pathType: state.$settingsPathType)))
+                            state.path.append(.movie(.init(pathDto: state.$settingsPathDto)))
                         }
-                        state.$settingsPathType.withLock { $0 = nil }
+                        state.$settingsPathDto.withLock { $0 = nil }
                     }
                     return .none
                 }

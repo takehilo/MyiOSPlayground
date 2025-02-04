@@ -5,7 +5,7 @@ import ComposableArchitecture
 struct Home {
     @ObservableState
     struct State {
-        @Shared(.homePathType) var homePathType
+        @Shared(.homePathDto) var homePathDto
     }
 
     enum Action: ViewAction {
@@ -23,10 +23,10 @@ struct Home {
             case let .view(viewAction):
                 switch viewAction {
                 case .newsButtonTapped:
-                    state.$homePathType.withLock { $0 = .news(.init()) }
+                    state.$homePathDto.withLock { $0 = .news(.init()) }
                     return .none
                 case .movieButtonTapped:
-                    state.$homePathType.withLock { $0 = .movie(.init()) }
+                    state.$homePathDto.withLock { $0 = .movie(.init()) }
                     return .none
                 }
             }

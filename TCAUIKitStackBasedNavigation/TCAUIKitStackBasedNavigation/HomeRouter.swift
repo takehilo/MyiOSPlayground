@@ -5,7 +5,7 @@ import ComposableArchitecture
 struct HomeRouter {
     @ObservableState
     struct State {
-        @Shared(.homePathType) var homePathType
+        @Shared(.homePathDto) var homePathDto
         var home = Home.State()
         var path = StackState<Path.State>()
     }
@@ -21,7 +21,7 @@ struct HomeRouter {
         }
 
         enum Internal {
-            case pathTypeChanged
+            case pathDtoChanged
         }
     }
 
@@ -35,23 +35,23 @@ struct HomeRouter {
                 switch viewAction {
                 case .viewDidLoad:
                     return .publisher {
-                        state.$homePathType
+                        state.$homePathDto
                             .publisher
                             .dropFirst()
-                            .map { _ in Action._internal(.pathTypeChanged) }
+                            .map { _ in Action._internal(.pathDtoChanged) }
                     }
                 }
             case let ._internal(internalAction):
                 switch internalAction {
-                case .pathTypeChanged:
-                    if let pathType = state.homePathType {
-                        switch pathType {
+                case .pathDtoChanged:
+                    if let pathDto = state.homePathDto {
+                        switch pathDto {
                         case .news:
-                            state.path.append(.news(.init(pathType: state.$homePathType)))
+                            state.path.append(.news(.init(pathDto: state.$homePathDto)))
                         case .movie:
-                            state.path.append(.movie(.init(pathType: state.$homePathType)))
+                            state.path.append(.movie(.init(pathDto: state.$homePathDto)))
                         }
-                        state.$homePathType.withLock { $0 = nil }
+                        state.$homePathDto.withLock { $0 = nil }
                     }
                     return .none
                 }
@@ -95,14 +95,14 @@ class HomeRouterController: NavigationStackController {
     }
 }
 
-extension SharedReaderKey where Self == InMemoryKey<PathType?> {
-    static var homePathType: Self {
-        inMemory("homePathType")
+extension SharedReaderKey where Self == InMemoryKey<PathDto?> {
+    static var homePathDto: Self {
+        inMemory("homePathDto")
     }
 }
 
-extension SharedReaderKey where Self == InMemoryKey<PathType?>.Default {
-    static var homePathType: Self {
-        Self[.homePathType, default: nil]
+extension SharedReaderKey where Self == InMemoryKey<PathDto?>.Default {
+    static var homePathDto: Self {
+        Self[.homePathDto, default: nil]
     }
 }
